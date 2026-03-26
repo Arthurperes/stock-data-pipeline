@@ -113,11 +113,4 @@ Qualidade de dados
 👨‍💻 Autor
 Arthur Peres
 
----
 
-# 🚀 COMO ATUALIZAR
-
-No terminal:
-
-```bash
-nano README.md
