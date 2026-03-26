@@ -109,10 +109,9 @@ Integração com AWS (S3, Glue, Kinesis)
 Deploy do dashboard
 Monitoramento e observabilidade
 Qualidade de dados
+
 👨‍💻 Autor
-
 Arthur Peres
-
 
 ---
 
