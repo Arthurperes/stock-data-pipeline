@@ -1,8 +1,8 @@
 import json
 import time
 from kafka import KafkaProducer
-from simulator import generate_price
-from config import KAFKA_BOOTSTRAP_SERVERS, TOPIC_STOCK_PRICES
+from app.simulator import generate_price
+from app.config import KAFKA_BOOTSTRAP_SERVERS, TOPIC_STOCK_PRICES
 
 producer = KafkaProducer(
     bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,

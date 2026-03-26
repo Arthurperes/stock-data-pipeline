@@ -1,8 +1,9 @@
 import json
 import hashlib
+from app.data_lake_writer import save_json_to_datalake
 from kafka import KafkaConsumer
 from sqlalchemy import create_engine, text
-from config import (
+from app.config import (
     KAFKA_BOOTSTRAP_SERVERS,
     TOPIC_STOCK_PRICES,
     TOPIC_STOCK_ORDERS,
@@ -78,19 +79,30 @@ def run():
         data = message.value
 
         try:
-            with engine.begin() as conn:  # 🔥 agora commit por mensagem
-
+            with engine.begin() as conn:
                 if topic == TOPIC_STOCK_PRICES:
                     processed = process_price(data)
                     if processed:
                         insert_price(conn, processed)
-                        print(f"💾 PRICE salvo: {processed}")
+                        object_name = save_json_to_datalake(
+                            bucket="raw",
+                            prefix="prices",
+                            data=processed
+                        )
+                        print(f"💾 PRICE salvo no banco e MinIO: {processed}")
+                        print(f"📁 Arquivo MinIO: {object_name}")
 
                 elif topic == TOPIC_STOCK_ORDERS:
                     processed = process_order(data)
                     if processed:
                         insert_order(conn, processed)
-                        print(f"💾 ORDER salvo: {processed}")
+                        object_name = save_json_to_datalake(
+                            bucket="raw",
+                            prefix="orders",
+                            data=processed
+                        )
+                        print(f"💾 ORDER salvo no banco e MinIO: {processed}")
+                        print(f"📁 Arquivo MinIO: {object_name}")
 
         except Exception as e:
             print(f"❌ Erro ao processar: {e}")
