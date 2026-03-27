@@ -42,21 +42,26 @@ PySpark (Big Data)
 Streamlit
 Docker
 Terraform
+
 📊 Camadas do Data Lake
+
 🔴 Raw
 Dados brutos do streaming
 Sem tratamento
 Particionados por data
 raw/prices/YYYY/MM/DD/*.json
 raw/orders/YYYY/MM/DD/*.json
+
 🟡 Processed
 Dados tratados e padronizados
 Tipagem aplicada
 Prontos para consumo analítico
+
 🟢 Analytics
 Dados agregados
 Métricas de negócio
 Base para dashboards
+
 🔄 Pipeline
 Simulação de eventos com Python
 Ingestão em tempo real via Kafka
@@ -65,10 +70,12 @@ Armazenamento no Data Lake (MinIO)
 Transformação com Python
 Processamento distribuído com Spark
 Visualização com Streamlit
+
 📈 Exemplos de Métricas
 Preço médio por ticker
 Volume total negociado
 Quantidade de ordens
+
 🧱 Infraestrutura como Código
 
 Parte da infraestrutura foi provisionada utilizando Terraform com provider Docker:
@@ -76,6 +83,7 @@ Parte da infraestrutura foi provisionada utilizando Terraform com provider Docke
 Containers
 Volumes
 Network
+
 🚀 Como Executar
 Subir infraestrutura
 docker compose up -d
@@ -90,10 +98,12 @@ Spark (analytics)
 python3 -m app.spark_processor
 Dashboard
 python3 -m streamlit run dashboard/streamlit_app.py
+
 ☁️ Terraform
 cd terraform
 terraform init
 terraform apply
+
 🧠 Aprendizados
 
 Este projeto demonstra:
@@ -104,6 +114,12 @@ Processamento distribuído com Spark
 Integração entre múltiplas ferramentas
 Infraestrutura como código
 Boas práticas de engenharia de dados
+
+## Observabilidade
+
+A solução implementa logs no consumer para rastrear o fluxo de dados.
+Em ambientes produtivos, poderiam ser utilizados Prometheus e Grafana para monitoramento de métricas e alertas.
+
 🎯 Próximos passos
 Integração com AWS (S3, Glue, Kinesis)
 Deploy do dashboard
