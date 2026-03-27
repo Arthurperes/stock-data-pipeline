@@ -120,6 +120,29 @@ Boas práticas de engenharia de dados
 A solução implementa logs no consumer para rastrear o fluxo de dados.
 Em ambientes produtivos, poderiam ser utilizados Prometheus e Grafana para monitoramento de métricas e alertas.
 
+## Segurança de Dados
+
+Embora os dados sejam simulados, a arquitetura considera boas práticas como:
+- Criptografia em trânsito (HTTPS)
+- Controle de acesso (IAM em ambiente cloud)
+- Políticas de acesso ao Data Lake
+
+## Mascaramento de Dados
+
+Para cenários com dados sensíveis, seriam aplicadas técnicas como:
+- Hashing de informações pessoais
+- Anonimização de dados
+- Tokenização
+
+## Escalabilidade
+
+A arquitetura foi projetada para escalar horizontalmente:
+
+- Kafka permite aumento de throughput via particionamento
+- Spark possibilita processamento distribuído
+- Data Lake (S3/MinIO) escala de forma elástica
+- Infraestrutura pode ser provisionada em cloud via Terraform
+
 🎯 Próximos passos
 Integração com AWS (S3, Glue, Kinesis)
 Deploy do dashboard
